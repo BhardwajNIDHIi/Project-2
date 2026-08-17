@@ -1,17 +1,5 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Redirect } from 'expo-router';
 
 export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text>welcome </Text>
-    </View>
-  );
+  return <Redirect href="/home" />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop:100,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
