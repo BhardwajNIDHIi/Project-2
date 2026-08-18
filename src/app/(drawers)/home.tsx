@@ -13,7 +13,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';
-
+import { router } from "expo-router";
 type Tourist = {
   id: string;
   name: string;
@@ -237,16 +237,18 @@ export default function Home() {
   
 
   const openEmergencyService = (
-    service: EmergencyService
-  ) => {
-    Alert.alert(
-      service.title,
-      `Finding nearby ${service.title.toLowerCase()} services...`
-    );
+  service: EmergencyService
+) => {
+  if (service.id === 'hospital') {
+    router.push('/emergency/hospital');
+    return;
+  }
 
-    // Later:
-    // We will connect this with real nearby locations.
-  };
+  Alert.alert(
+    service.title,
+    `Finding nearby ${service.title.toLowerCase()} services...`
+  );
+};
 
   
   // TOURIST LOCATION
