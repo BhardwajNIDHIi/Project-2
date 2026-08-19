@@ -1,46 +1,52 @@
 import React from "react";
+
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+
 import { Ionicons } from "@expo/vector-icons";
 
-type ClinicCardProps = {
+type Props = {
   name: string;
   address: string;
   distance: number;
-  phone?: string | null;
+  phone: string | null;
   onDirections: () => void;
   onCall: () => void;
 };
 
-export default function ClinicCard({
+export default function FuelCard({
   name,
   address,
   distance,
   phone,
   onDirections,
   onCall,
-}: ClinicCardProps) {
+}: Props) {
+
   return (
     <View style={styles.card}>
 
-      <View style={styles.infoRow}>
+      <View style={styles.top}>
 
-        <View style={styles.iconBox}>
+        <View style={styles.icon}>
+
           <Ionicons
-            name="medkit"
+            name="car"
             size={22}
             color="#FFFFFF"
           />
+
         </View>
 
-        <View style={styles.details}>
+        <View style={styles.info}>
+
           <Text
             style={styles.name}
-            numberOfLines={1}
+            numberOfLines={2}
           >
             {name}
           </Text>
@@ -55,16 +61,18 @@ export default function ClinicCard({
           >
             {address}
           </Text>
+
         </View>
 
       </View>
 
-      <View style={styles.buttons}>
+      <View style={styles.actions}>
 
         <TouchableOpacity
           style={styles.button}
           onPress={onDirections}
         >
+
           <Ionicons
             name="navigate"
             size={17}
@@ -74,24 +82,25 @@ export default function ClinicCard({
           <Text style={styles.buttonText}>
             Directions
           </Text>
+
         </TouchableOpacity>
 
-        {phone ? (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={onCall}
-          >
-            <Ionicons
-              name="call"
-              size={17}
-              color="#22C55E"
-            />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={onCall}
+        >
 
-            <Text style={styles.buttonText}>
-              Call
-            </Text>
-          </TouchableOpacity>
-        ) : null}
+          <Ionicons
+            name="call"
+            size={17}
+            color="#22C55E"
+          />
+
+          <Text style={styles.buttonText}>
+            Call
+          </Text>
+
+        </TouchableOpacity>
 
       </View>
 
@@ -100,6 +109,7 @@ export default function ClinicCard({
 }
 
 const styles = StyleSheet.create({
+
   card: {
     backgroundColor: "#0F1426",
     borderRadius: 18,
@@ -109,20 +119,20 @@ const styles = StyleSheet.create({
     borderColor: "#202640",
   },
 
-  infoRow: {
+  top: {
     flexDirection: "row",
   },
 
-  iconBox: {
+  icon: {
     width: 45,
     height: 45,
     borderRadius: 14,
-    backgroundColor: "#6C63FF",
+    backgroundColor: "#F59E0B",
     alignItems: "center",
     justifyContent: "center",
   },
 
-  details: {
+  info: {
     flex: 1,
     marginLeft: 12,
   },
@@ -145,7 +155,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
 
-  buttons: {
+  actions: {
     flexDirection: "row",
     gap: 10,
     marginTop: 14,
@@ -156,9 +166,9 @@ const styles = StyleSheet.create({
     height: 38,
     borderRadius: 10,
     backgroundColor: "#171D35",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "row",
   },
 
   buttonText: {
@@ -167,4 +177,5 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginLeft: 6,
   },
+
 });

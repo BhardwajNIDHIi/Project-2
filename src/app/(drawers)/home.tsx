@@ -236,13 +236,47 @@ export default function Home() {
   // EMERGENCY SERVICE
   
 
-  const openEmergencyService = (
+  // EMERGENCY SERVICE
+
+const openEmergencyService = (
   service: EmergencyService
 ) => {
-  if (service.id === 'hospital') {
-    router.push('/emergency/hospital');
+
+  if (service.id === "hospital") {
+    router.push("/emergency/hospital");
     return;
   }
+
+  if (service.id === "clinic") {
+    router.push("/emergency/clinic");
+    return;
+  }
+
+  if (service.id === "police") {
+    router.push("/emergency/police");
+    return;
+  }
+
+  if (service.id === "pharmacy") {
+    router.push("/emergency/pharmacy");
+    return;
+  }
+  if (service.id === "mechanic") {
+  router.push("/emergency/mechanic");
+  return;
+}
+if (service.id === "fire") {
+  router.push("/emergency/fireStation");
+  return;
+}
+if (service.id === "atm") {
+  router.push("/emergency/atm");
+  return;
+}
+if (service.id === "fuel") {
+  router.push("/emergency/fuel");
+  return;
+}
 
   Alert.alert(
     service.title,
